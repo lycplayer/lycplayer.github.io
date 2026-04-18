@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮件中心</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif;}
+        body{background:#f0f0f0;transition:opacity 0.3s ease;}
+        .header{background:#fff;padding:15px 30px;display:flex;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,0.05);}
+        .logo{font-size:18px;font-weight:bold;color:#409eff;cursor:pointer;}
+        .nav{margin-left:40px;display:flex;gap:25px;}
+        .nav a{text-decoration:none;color:#333;font-size:14px;}
+        .nav a.active{color:#409eff;font-weight:bold;}
+        .user{margin-left:auto;font-weight:bold;color:#333;}
+        .main{display:flex;padding:25px;gap:20px;}
+        .sidebar{width:200px;background:#fff;padding:20px;border-radius:8px;}
+        .sidebar h3{margin-bottom:15px;font-size:16px;}
+        .sidebar a{display:block;padding:8px 0;color:#333;text-decoration:none;font-size:14px;}
+        .content{flex:1;background:#fff;padding:25px;border-radius:8px;}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo" onclick="go('index.html')">信息科技课堂平台</div>
+        <div class="nav">
+            <a href="blog.html">博客中心</a>
+            <a href="email.html" class="active">邮件中心</a>
+            <a href="disk.html">网盘</a>
+            <a href="qa.html">爱问知识库</a>
+        </div>
+        <div class="user" id="currentUser"></div>
+    </div>
+
+    <div class="main">
+        <div class="sidebar">
+            <h3>邮件中心</h3>
+            <a href="#">收件箱</a>
+            <a href="#">发邮件</a>
+            <a href="#">已发送</a>
+        </div>
+        <div class="content">
+            <h3>邮件列表</h3>
+            <p style="margin-top:15px;">这里是邮件中心内容区域</p>
+        </div>
+    </div>
+
+<script>
+window.onload=function(){
+    let user = localStorage.getItem("loginUser");
+    let guest = localStorage.getItem("guestMode");
+    let showText = "未登录";
+    if(guest){
+        showText = "游客";
+    }else if(user){
+        showText = user;
+    }
+    document.getElementById("currentUser").innerText = "用户：" + showText;
+}
+function go(url){
+    document.body.style.opacity=0;
+    setTimeout(()=>{location.href=url},300);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,339 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* 登录页样式 */
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.login-title {
+    font-size: 48px;
+    color: #2c3e50;
+    margin-bottom: 40px;
+}
+
+.login-form {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.login-form input,
+.login-form select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.login-btn {
+    padding: 8px 20px;
+    background-color: #409eff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 首页样式 */
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-height: 100vh;
+    padding: 0 10%;
+}
+
+.home-left {
+    text-align: left;
+}
+
+.home-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.home-title {
+    font-size: 32px;
+    color: #27ae60;
+    margin-bottom: 10px;
+}
+
+.home-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-box input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 14px;
+}
+
+.search-btn {
+    padding: 10px 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    padding: 6px 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.home-middle {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.module-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+}
+
+.home-right .module-item {
+    margin-bottom: 30px;
+}
+
+.module-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.module-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 平台公共样式 */
+.platform-header {
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.platform-logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #409eff;
+}
+
+.platform-nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #333;
+}
+
+.platform-nav a.active {
+    color: #e6a23c;
+    font-weight: bold;
+}
+
+.user-info {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.platform-container {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #e8edee;
+    padding: 20px;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 15px;
+}
+
+.sidebar-menu li a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-menu li a.active {
+    background-color: #409eff;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.main-content {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/* 博客样式 */
+.blog-item {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.blog-title {
+    font-size: 18px;
+    color: #409eff;
+    margin-bottom: 10px;
+}
+
+.blog-content {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.blog-meta {
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    gap: 15px;
+}
+
+/* 邮件样式 */
+.email-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.email-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.email-list th, .email-list td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+/* 网盘样式 */
+.disk-file-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.disk-file-name {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.disk-file-meta {
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 知识库样式 */
+.qa-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.qa-title {
+    font-size: 16px;
+    color: #409eff;
+    margin-bottom: 5px;
+}
+
+.qa-meta {
+    font-size: 12px;
+    color: #999;
+}
+
+.qa-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.qa-actions button {
+    padding: 5px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.collect-btn {
+    background-color: #e6a23c;
+    color: #fff;
+}
+
+.reply-btn {
+    background-color: #409eff;
+    color: #fff;
+}

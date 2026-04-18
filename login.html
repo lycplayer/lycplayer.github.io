@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>易考</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .top-space { flex: 1; }
+        .login-main {
+            background: #f2f2f2;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .title-small { font-size: 26px; margin-bottom: 10px; }
+        .title-big { font-size: 48px; margin-bottom: 40px; }
+        .login-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .form-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .form-item label { font-size: 14px; }
+        input, select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 8px 22px;
+            background: #409eff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .guest-btn{
+            background: #666;
+            margin-left:10px;
+        }
+        .bottom-space { flex: 1; }
+
+        .user-info-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            min-width: 260px;
+            font-size: 14px;
+            line-height: 1.6;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .user-info-box h4 { margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="user-info-box" id="userBox">
+    <h4>可登录账号</h4>
+</div>
+
+<div class="top-space"></div>
+<div class="login-main">
+    <div class="title-small">易考</div>
+    <div class="title-big">信息科技答题网页</div>
+    <div class="login-bar">
+        <div class="form-item">
+            <label>平台账户:</label>
+            <input type="text" id="username" placeholder="admin">
+        </div>
+        <div class="form-item">
+            <label>登入密码:</label>
+            <input type="password" id="password" placeholder="请输入密码">
+        </div>
+        <div class="form-item">
+            <label>登入考试:</label>
+            <select id="exam-select">
+                <option value="123">123</option>
+            </select>
+        </div>
+        <button onclick="login()">登入</button>
+        <button class="guest-btn" onclick="guestLogin()">游客模式</button>
+    </div>
+</div>
+<div class="bottom-space"></div>
+
+<script>
+const userList = {
+    "admin":"admin","student1":"123456","student2":"123456","teacher":"123456"
+};
+
+window.onload = function(){
+    let box = document.getElementById("userBox");
+    for(let user in userList){
+        let p = document.createElement("p");
+        p.innerText = "账号："+user+"  密码："+userList[user];
+        box.appendChild(p);
+    }
+}
+
+function login(){
+    let u = document.getElementById("username").value.trim();
+    let p = document.getElementById("password").value.trim();
+    let e = document.getElementById("exam-select").value;
+    if(userList[u] && userList[u] === p && e === "123"){
+        localStorage.setItem("loginUser", u);
+        localStorage.removeItem("guestMode");
+        document.body.style.opacity = 0;
+        setTimeout(()=>{location.href="index.html"},300);
+    }else{
+        alert("账号、密码或考试错误");
+    }
+}
+
+function guestLogin(){
+    localStorage.setItem("guestMode","true");
+    localStorage.removeItem("loginUser");
+    document.body.style.opacity = 0;
+    setTimeout(()=>{location.href="index.html"},300);
+}
+</script>
+</body>
+</html>

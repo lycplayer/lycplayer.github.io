@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif;}
+        body{background:#f0f0f0;color:#333;transition:opacity 0.3s ease;}
+        .home-container{display:flex;align-items:center;justify-content:space-around;min-height:100vh;padding:30px 5%;flex-wrap:wrap;gap:30px;}
+        .home-left{flex:1;min-width:300px;max-width:450px;}
+        .home-title{font-size:28px;color:#27ae60;margin-bottom:10px;}
+        .home-desc{font-size:14px;color:#666;margin-bottom:20px;line-height:1.6;}
+        .search-box{display:flex;width:100%;max-width:380px;min-width:280px;margin-bottom:20px;}
+        .search-box input{flex:1;height:42px;padding:0 15px;border:1px solid #ccc;border-right:none;border-radius:6px 0 0 6px;outline:none;}
+        .search-btn{width:80px;height:42px;background:#409eff;color:#fff;border:none;border-radius:0 6px 6px 0;cursor:pointer;}
+        .user-info{font-size:14px;margin-top:10px;}
+        .user-info span{color:#409eff;font-weight:bold;}
+        .home-middle{display:flex;flex-direction:column;gap:30px;}
+        .module-icon{width:50px;height:50px;background:#fff;border:1px solid #eee;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+        .home-right{flex:1;min-width:300px;max-width:400px;}
+        .module-item{margin-bottom:30px;cursor:pointer;}
+        .module-title{font-size:20px;font-weight:bold;margin-bottom:8px;}
+        .module-desc{font-size:14px;color:#666;line-height:1.6;}
+        .upload-tip{position:fixed;top:20px;right:0;background:#409eff;color:white;padding:10px 20px;border-radius:4px 0 0 4px;}
+    </style>
+</head>
+<body>
+<div class="home-container">
+    <div class="home-left">
+        <div class="home-title">信息科技课堂教学网页平台</div>
+        <div class="home-desc">请按照答题要求，进入对应模块进行答题，无需要不操作。</div>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="请输入要搜索的内容">
+            <button class="search-btn" onclick="toBaidu()">搜索</button>
+        </div>
+        <div class="user-info">
+            当前登录用户：<span id="loginUserName"></span>
+        </div>
+    </div>
+    <div class="home-middle">
+        <div class="module-icon" onclick="checkLogin('blog.html')">📖</div>
+        <div class="module-icon" onclick="checkLogin('disk.html')">💾</div>
+        <div class="module-icon" onclick="checkLogin('qa.html')">💬</div>
+    </div>
+    <div class="home-right">
+        <div class="module-item" onclick="checkLogin('blog.html')">
+            <div class="module-title">博客中心</div>
+            <div class="module-desc">发表文章，记录自己学习过程中的点点滴滴。同学之间也可以相互交流。</div>
+        </div>
+        <div class="module-item" onclick="checkLogin('disk.html')">
+            <div class="module-title">网盘</div>
+            <div class="module-desc">每位同学有自己独立的网上磁盘空间，可保存个人文件、图片、视频等资料，也可分享给其他同学。</div>
+        </div>
+        <div class="module-item" onclick="checkLogin('qa.html')">
+            <div class="module-title">爱问知识库</div>
+            <div class="module-desc">提出问题，请教老师或其它同学，并可展开讨论；可通过检索功能查询知识库</div>
+        </div>
+    </div>
+</div>
+<div class="upload-tip">📎 拖拽至此上传</div>
+
+<script>
+window.onload=function(){
+    let user = localStorage.getItem("loginUser");
+    let guest = localStorage.getItem("guestMode");
+    if(guest){
+        document.getElementById("loginUserName").innerText = "游客";
+    }else{
+        document.getElementById("loginUserName").innerText = user || "未登录";
+    }
+}
+
+function checkLogin(url){
+    let user = localStorage.getItem("loginUser");
+    let guest = localStorage.getItem("guestMode");
+    if(user || guest){
+        go(url);
+        return;
+    }
+    
+    if(confirm("您还未登录，是否前往登录？")){
+        go("login.html");
+    }else{
+        if(confirm("使用游客模式浏览体验更佳，是否开启？")){
+            localStorage.setItem("guestMode","true");
+            go(url);
+        }else{
+            alert("ok");
+            go("login.html");
+        }
+    }
+}
+
+function go(url){
+    document.body.style.opacity=0;
+    setTimeout(()=>{location.href=url},300);
+}
+
+function toBaidu(){
+    let key = document.getElementById("searchInput").value.trim();
+    if(key){
+        window.open("https://www.baidu.com/s?wd="+encodeURIComponent(key));
+    }else{
+        alert("请输入内容");
+    }
+}
+</script>
+</body>
+</html>
